@@ -81,7 +81,17 @@ function direcciones(laberinto) {}
 // deepEqualArrays([0,1,2], [0,1,2,3]) => false
 // deepEqualArrays([0,1,[[0,1,2],1,2]], [0,1,[[0,1,2],1,2]]) => true
 
-function deepEqualArrays(arr1, arr2) {}
+function deepEqualArrays(arr1, arr2) {
+  if (arr1.length != arr2.length) return false;
+  for (let i = 0; i < arr1.length; i++) {
+    if (typeof arr1[i] === "object" && typeof arr2[i] === "object") {
+      return deepEqualArrays(arr1[i], arr2[i]);
+    } else if (arr1[i] === arr2[i]) {
+      return true;
+    }
+    return false;
+  }
+}
 
 // ----- LinkedList -----
 
